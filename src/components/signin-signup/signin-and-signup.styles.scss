@@ -1,0 +1,10 @@
+.signin-and-signup {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  margin: 30px auto;
+
+  & > div {
+    width: 45%;
+  }
+}

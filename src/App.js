@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { auth } from './firebase/firbase.util';
+import { auth, createUserProfileDocument } from './firebase/firbase.util';
 
 import './App.css';
 import Header from './components/header/Header.component';
@@ -15,18 +15,31 @@ class App extends React.Component {
     this.state = {
       currentUser: null,
     };
-    this.unsubcribeFromAuth = null;
+    this.unsubscribeFromAuth = null;
   }
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
-      console.log(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot((snapShot) => {
+          this.setState(() => {
+            const currentUser = {
+              id: snapShot.id,
+              ...snapShot.data(),
+            };
+            console.log(currentUser);
+            return { currentUser };
+          });
+        });
+      } else {
+        this.setState(() => ({ currentUser: userAuth }));
+      }
     });
   }
 
   componentWillUnmount() {
-    this.unsubcribeFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render() {
