@@ -12,7 +12,7 @@ export const MenuItem = ({
   match,
 }) => (
   <div
-    className={`menu-item ${size}`}
+    className={`menu-item ${size ? size : ''}`}
     onClick={() => {
       history.push(`${match.url}${linkUrl}`);
     }}
