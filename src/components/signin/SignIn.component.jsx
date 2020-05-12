@@ -4,7 +4,11 @@ import './sign-in.styles.scss';
 import FormInput from './../form-input/FormInput.component';
 import CustomButton from './../custom-button/CustomButton.component';
 
-import { auth, signInWithGoogle } from './../../firebase/firbase.util';
+import {
+  auth,
+  signInWithGoogle,
+  firestore,
+} from './../../firebase/firbase.util';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -23,6 +27,15 @@ class SignIn extends React.Component {
     try {
       await auth.signInWithEmailAndPassword(email, password);
       this.setState(() => ({ email: '', password: '' }));
+      const data = await firestore.doc(`users/${auth.currentUser.uid}`).get();
+      if (!data.data().displayName) {
+        const name = prompt(
+          "It's detected that you are a new user, please enter you Name for successfull account creation."
+        );
+        await firestore
+          .doc(`users/${auth.currentUser.uid}`)
+          .update({ displayName: name });
+      }
     } catch (err) {
       alert('Could not login. Sorry try again.');
       console.log(err);

@@ -67,7 +67,7 @@ class SignUp extends React.Component {
           <FormInput
             type="text"
             name="displayName"
-            label="displayName"
+            label="display name"
             value={displayName}
             onChange={this.handleChange}
             required
@@ -91,7 +91,7 @@ class SignUp extends React.Component {
           <FormInput
             type="password"
             name="confirmPassword"
-            label="confirmPassword"
+            label="confirm password"
             value={confirmPassword}
             onChange={this.handleChange}
             required
