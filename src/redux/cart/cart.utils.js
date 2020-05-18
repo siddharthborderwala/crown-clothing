@@ -21,11 +21,14 @@ export const clearItem = (cartItems, id) => {
 export const removeItem = (cartItems, id) => {
   return cartItems
     .map((item) => {
-      let newQuantity;
       if (item.id === id) {
-        newQuantity = item.quantity - 1;
+        const newQuantity = item.quantity - 1;
+        return newQuantity !== 0
+          ? { ...item, quantity: newQuantity }
+          : undefined;
+      } else {
+        return item;
       }
-      return newQuantity !== 0 ? { ...item, quantity: newQuantity } : null;
     })
     .filter((item) => item);
 };
