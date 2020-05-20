@@ -28,7 +28,7 @@
     "extends": "react-app"
   },
   "engines": {
-    "node": ">=12.6.2 < 12.6.3"
+    "node": "==12.6.2"
   },
   "browserslist": {
     "production": [
