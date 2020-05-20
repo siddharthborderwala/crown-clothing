@@ -6,6 +6,16 @@
   align-items: center;
   margin: 50px auto 0;
 
+  .title-box {
+    text-align: start;
+    align-self: stretch;
+    margin-bottom: 30px;
+
+    .title {
+      font-size: 40px;
+    }
+  }
+
   .checkout-header {
     width: 100%;
     padding: 10px 0;
@@ -27,5 +37,14 @@
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+  }
+
+  .test-warning {
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
   }
 }
