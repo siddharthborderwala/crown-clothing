@@ -13,6 +13,7 @@ import CheckoutPage from './pages/checkout/CheckoutPage.component';
 
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+import NotFoundPageComponent from './pages/not-found-page/NotFoundPage.component';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -57,6 +58,7 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <SigninAndSignup />
             }
           />
+          <Route component={NotFoundPageComponent} />
         </Switch>
       </div>
     );
