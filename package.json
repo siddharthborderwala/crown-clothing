@@ -46,6 +46,6 @@
     "redux-logger": "^3.0.6"
   },
   "engines": {
-    "node": "16.6"
+    "node": "12.6"
   }
 }
