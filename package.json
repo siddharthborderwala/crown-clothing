@@ -44,9 +44,5 @@
   },
   "devDependencies": {
     "redux-logger": "^3.0.6"
-  },
-  "engines": {
-    "node": "~12.6.2",
-    "npm": "~6.14.5"
   }
 }
