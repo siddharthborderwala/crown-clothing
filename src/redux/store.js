@@ -3,8 +3,8 @@ import { persistStore } from 'redux-persist';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 
-import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
+import persistantRootReducer from './rootReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,7 +19,10 @@ if (process.env.NODE_ENV === 'development') {
   composeEnhancers = compose;
 }
 
-export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
+export const store = createStore(
+  persistantRootReducer,
+  composeEnhancers(applyMiddleware(...middlewares))
+);
 
 sagaMiddleware.run(rootSaga);
 

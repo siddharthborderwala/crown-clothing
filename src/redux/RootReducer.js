@@ -20,4 +20,6 @@ const rootReducer = combineReducers({
   shop: shopReducer,
 });
 
-export default persistReducer(persistConfig, rootReducer);
+const persistantRootReducer = persistReducer(persistConfig, rootReducer);
+
+export default persistantRootReducer;
