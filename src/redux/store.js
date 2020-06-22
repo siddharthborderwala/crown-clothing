@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)));
-
+//saga middleware can be run only after store has been created
 sagaMiddleware.run(rootSaga);
 
 export const persistor = persistStore(store);

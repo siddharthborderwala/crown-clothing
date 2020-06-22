@@ -8,6 +8,9 @@
     margin-bottom: 25px;
     text-transform: uppercase;
     align-self: start;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .preview {
