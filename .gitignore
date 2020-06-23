@@ -1,7 +1,7 @@
-client/node_modules/
-client/build
+*node_modules/
+*build/
 
-.env
+*.env
 
 *.iml
 
